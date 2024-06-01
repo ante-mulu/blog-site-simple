@@ -9,4 +9,6 @@ use Illuminate\Support\Facades\Route;
 // //     return view('second');
 // // });
 // Route::view('/second', 'second');
-Route::get('/home', function(){return view('home');});
+Route::view('/', 'home')->name('home');
+Route::view('/about', 'about')->name('about');
+Route::view('/contact', 'contact')->name('contact');
