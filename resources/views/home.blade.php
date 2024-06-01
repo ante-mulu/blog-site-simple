@@ -13,7 +13,7 @@
                 <!-- Blog entries-->
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
-                    <div class="card mb-4">
+                    {{-- <div class="card mb-4">
                         <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
                         <div class="card-body">
                             <div class="small text-muted">January 1, 2023</div>
@@ -21,32 +21,36 @@
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
                             <a class="btn btn-primary" href="#!">Read more →</a>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
+                        @foreach ($posts as $post)
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                    <div class="small text-muted">{{$post->created_at}}</div>
+                                    <h2 class="card-title h4">{{$post->title}}</h2>
+                                    <p class="card-text">{{$post->text}}</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        @endforeach
+
+                            {{-- <!-- Blog post-->
+                            <div class="card mb-4">
+                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">January 1, 2023</div>
+                                    <h2 class="card-title h4">Post Title</h2>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                </div>
+                            </div> --}}
+                        {{-- </div> --}}
+                        {{-- <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
@@ -67,7 +71,7 @@
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- Pagination-->
                     <nav aria-label="Pagination">
@@ -103,7 +107,7 @@
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
                                         @foreach ($categories as $category)
-                                        <li><a href="#!">{{$category->name}}</a></li>
+                                        <li><a href="{{route('home')}}?category_id={{$category->id}}">{{$category->name}}</a></li>
                                         @endforeach
                                         {{-- <li><a href="#!">HTML</a></li>
                                         <li><a href="#!">Freebies</a></li> --}}
